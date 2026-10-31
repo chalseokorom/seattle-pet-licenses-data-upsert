@@ -1,4 +1,4 @@
-License Issue Date,License Number,Animal's Name,Species,Primary Breed,Secondary Breed,ZIP Code,Last Seen In Snapshot,Is Active
+License Issue Date,License Number,Animal's Name,Species,Primary Breed,Secondary Breed,ZIP Code,last_updated,Is Active
 2026-10-06,8086311,Max,Cat,Domestic Shorthair,,98109,2026-10-31,Yes
 2026-10-06,8086313,Ziggy Pawdust,Cat,American Shorthair,Bengal,98106,2026-10-31,Yes
 2026-10-06,8086314,Midnight,Cat,Domestic Longhair,Mix,98106,2026-10-31,Yes
