@@ -12,14 +12,14 @@ def write(path, rows, sep=","):
     return path
 
 
-OLD_DATA_DATA = [
+OLD_DATA = [
     ["January 01 2024", "100", "Rex", "Dog", "Terrier", "", "98103"],   # renews, then moves
     ["January 01 2024", "S1", "Mo", "Cat", "Siamese", "", "98101"],     # re-licensed as 800
     ["January 01 2024", "101", "Luna", "Cat", "Mix", "", "98115"],      # ambiguous profile
     ["January 01 2024", "102", "Luna", "Cat", "Mix", "", "98115"],      # ambiguous profile
     ["January 01 2024", "103", "Gone", "Dog", "Poodle", "", "98117"],   # lapses
 ]
-NEW_DATA_DATA = [
+NEW_DATA = [
     ["January 01 2026", "100", "Rex", "Dog", "Terrier", "", "98105"],
     ["January 01 2026", "800", " mo ", "Cat", "Siamese", "", "98101"],
     ["January 01 2026", "801", "Luna", "Cat", "Mix", "", "98115"],
@@ -29,7 +29,7 @@ NEW_DATA_DATA = [
 
 @pytest.fixture
 def two(tmp_path):
-    """OLD_DATA_DATA (2024) combined with NEW_DATA (2026): returns (combined, change log, chance rate)."""
+    """OLD_DATA (2024) combined with NEW_DATA (2026): returns (combined, change log, chance rate)."""
     files = write(tmp_path / "s_2024.09.24.csv", OLD_DATA), write(tmp_path / "s_2026.10.31.csv", NEW_DATA)
     return cpl.combine(*map(cpl.load, files))
 

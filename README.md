@@ -5,7 +5,7 @@ Combines dated snapshots of the City of Seattle's pet license data into one hist
 ## Usage
 
 ```bash
-pip install pandas numpy tqdm pytest
+pip install -r requirements.txt
 python combine_pet_licenses.py   # combine every dated CSV in data/
 pytest                           # run the tests
 ```
@@ -34,7 +34,7 @@ Each step also shuffles ZIP codes and re-runs the matching to estimate how many 
 |---|---|
 | 2019.01.31 | [OpenIntro](https://github.com/OpenIntroStat/openintro) copy; pulled between Jan and Apr 2019, so the date is approximate |
 | 2020.10.23, 2025.04.28, 2025.07.25 | [Internet Archive](https://web.archive.org) captures of the City's CSV export |
-| 2024.09.24, 2026.10.6 | Downloaded from [data.seattle.gov](https://data.seattle.gov/City-Administration/Seattle-Pet-Licenses/jguv-t9rb) |
+| 2024.09.24, 2026.10.31 | Downloaded from [data.seattle.gov](https://data.seattle.gov/City-Administration/Seattle-Pet-Licenses/jguv-t9rb). The 2026 file was retrieved Oct 31, 2026; the portal's data runs through Oct 6, 2026. |
 
 The script reads both comma- and semicolon-separated files, and all three date styles used in the exports.
 
