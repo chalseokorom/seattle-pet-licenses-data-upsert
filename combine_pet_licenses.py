@@ -17,6 +17,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
 KEY = ["License Number", "Species"]  # some numbers are reused across species
 FIELDS = ["License Issue Date", "Animal's Name", "Primary Breed", "Secondary Breed", "ZIP Code"]
@@ -154,7 +155,9 @@ def combine_all(files):
     """Fold every file in order. Returns (combined, change log, one summary row per step)."""
     current = load(files[0])
     logs, steps = [], []
-    for path in files[1:]:
+    bar = tqdm(files[1:], desc="Combining", unit="snapshot")
+    for path in bar:
+        bar.set_postfix_str(Path(path).name)  # show which file is being added
         new, snapshot = load(path), file_date(path).date()
         out, log, chance = combine(current, new)
         counts = log["Change"].value_counts()
