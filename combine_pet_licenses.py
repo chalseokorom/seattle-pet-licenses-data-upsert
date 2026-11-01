@@ -1,6 +1,6 @@
 """Upsert a new pet licenses into current data, keeping one row per license.
 
-Usage: python combine_pet_licenses.py CURRENT_FILE NEW_FILE
+Usage: `python combine_pet_licenses.py CURRENT_FILE NEW_FILE`
   CURRENT  Existing license data or previous output of this script
   NEW      New license data
 Both file names must contain a date, e.g. 2026.10.31.
@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pandas as pd
 
-# Identifier is 'License Number' + 'Species', a few numbers are reused across species
+# Identifier is 'License Number' + 'Species', a few numbers are reused across pets
 KEY = ["License Number", "Species"]
 FIELDS = ["License Issue Date", "Animal's Name", "Primary Breed", "Secondary Breed", "ZIP Code"]
 OUTPUT_DIR = Path("data/output")
@@ -86,6 +86,6 @@ log_file = OUTPUT_DIR / f"seattle_pet_licenses_changes_{latest:%Y.%m.%d}.csv"
 out.to_csv(combined_file, index=False, date_format="%Y-%m-%d")
 log.to_csv(log_file, index=False)
 
-print(f"Wrote files: {combined_file} and {log_file}")
+print(f"Wrote to: {combined_file} and {log_file}")
 print(out["Is Active"].value_counts().to_string())
 print(log["Change"].value_counts().to_string())
